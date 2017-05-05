@@ -1,0 +1,30 @@
+{
+  "name": "pnum",
+  "version": "0.0.1",
+  "description": "persian number utilities for javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mavihq/pnum.git"
+  },
+  "keywords": [
+    "persian",
+    "number",
+    "farsi",
+    "adad",
+    "huruf",
+    "harf",
+    "word",
+    "toWord",
+    "rial"
+  ],
+  "author": "mavi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mavihq/pnum/issues"
+  },
+  "homepage": "https://github.com/mavihq/pnum#readme"
+}
