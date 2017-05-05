@@ -1,5 +1,5 @@
 {
-  "name": "pnum",
+  "name": "pnumber",
   "version": "0.0.1",
   "description": "persian number utilities for javascript",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mavihq/pnum.git"
+    "url": "git+https://github.com/mavihq/pnumber.git"
   },
   "keywords": [
     "persian",
@@ -24,7 +24,7 @@
   "author": "mavi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mavihq/pnum/issues"
+    "url": "https://github.com/mavihq/pnumber/issues"
   },
-  "homepage": "https://github.com/mavihq/pnum#readme"
+  "homepage": "https://github.com/mavihq/pnumber#readme"
 }

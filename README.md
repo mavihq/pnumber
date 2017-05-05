@@ -1,4 +1,4 @@
-# pnum
+# pnumber
 persian number utilities for javascript
 
 
@@ -6,12 +6,12 @@ persian number utilities for javascript
 
 es5
 ```
-const pnum = require('pnum')
+const pnumber = require('pnumber')
 
 const number = '123456'
-console.log(pnum.toWord(number))
-console.log(pnum.toWordRials(number))
-console.log(pnum.toWordTomans(number))
+console.log(pnumber.toWord(number))
+console.log(pnumber.toWordRials(number))
+console.log(pnumber.toWordTomans(number))
 
 +++++++++
 output:
@@ -22,7 +22,7 @@ output:
 
 es6
 ```
-import { toWord, toWordRials, toWordTomans } from 'pnum'
+import { toWord, toWordRials, toWordTomans } from 'pnumber'
 
 const number = '123456'
 console.log(toWord(number))

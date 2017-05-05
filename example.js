@@ -1,6 +1,6 @@
-const pnum = require('./index')
+const pnumber = require('./index')
 
 const number = '123456'
-console.log(pnum.toWord(number))
-console.log(pnum.toWordRials(number))
-console.log(pnum.toWordTomans(number))
+console.log(pnumber.toWord(number))
+console.log(pnumber.toWordRials(number))
+console.log(pnumber.toWordTomans(number))
