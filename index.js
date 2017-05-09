@@ -64,18 +64,33 @@ const toWordTomans = function(num) {
   return toWord(num, 0) + " تومان";
 };
 
-const toEnglishDigits = function (str) {
-    var charCodeZero = '۰'.charCodeAt(0);
-    return str.replace(/[۰-۹]/g, function (w) {
-        return w.charCodeAt(0) - charCodeZero;
-    });
+const toEnglishDigits = function(str) {
+  var charCodeZero = '۰'.charCodeAt(0);
+  return str.replace(/[۰-۹]/g, function(w) {
+    return w.charCodeAt(0) - charCodeZero;
+  });
 }
 
-const toPersianDigits = function (str) {
-    const persian={0:'۰',1:'۱',2:'۲',3:'۳',4:'۴',5:'۵',6:'۶',7:'۷',8:'۸',9:'۹'};
-    return str.replace(/[0-9]/g, function (w) {
-        return persian[w];
-    });
+const toPersianDigits = function(str) {
+  const persian = {
+    0: '۰',
+    1: '۱',
+    2: '۲',
+    3: '۳',
+    4: '۴',
+    5: '۵',
+    6: '۶',
+    7: '۷',
+    8: '۸',
+    9: '۹'
+  };
+  return str.replace(/[0-9]/g, function(w) {
+    return persian[w];
+  });
+}
+
+const onlyNumbers = function(str) {
+  return toEnglishDigits(str).replace(/\D/g,'')
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -84,4 +99,5 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports.toWordTomans = toWordTomans;
   module.exports.toPersianDigits = toPersianDigits;
   module.exports.toEnglishDigits = toEnglishDigits;
+  module.exports.onlyNumbers = onlyNumbers;
 }
