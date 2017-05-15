@@ -1,6 +1,6 @@
 {
   "name": "pnumber",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "persian number utilities for javascript",
   "main": "index.js",
   "scripts": {

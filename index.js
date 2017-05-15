@@ -1,10 +1,11 @@
 'use strict';
-const toWord = function(num, level) {
+
+var toWord = function toWord(num, level) {
   if (num === null) {
     return "";
   }
 
-  let _num = parseInt(toEnglishDigits(num.toString()))
+  var _num = parseInt(toEnglishDigits(num.toString()));
 
   if (_num < 0) {
     _num = _num * -1;
@@ -17,11 +18,11 @@ const toWord = function(num, level) {
       return "";
     }
   }
-  let result = "",
-    yekan = [" یک ", " دو ", " سه ", " چهار ", " پنج ", " شش ", " هفت ", " هشت ", " نه "],
-    dahgan = [" بیست ", " سی ", " چهل ", " پنجاه ", " شصت ", " هفتاد ", " هشتاد ", " نود "],
-    sadgan = [" یکصد ", " دویست ", " سیصد ", " چهارصد ", " پانصد ", " ششصد ", " هفتصد ", " هشتصد ", " نهصد "],
-    dah = [" ده ", " یازده ", " دوازده ", " سیزده ", " چهارده ", " پانزده ", " شانزده ", " هفده ", " هیجده ", " نوزده "];
+  var result = "",
+      yekan = [" یک ", " دو ", " سه ", " چهار ", " پنج ", " شش ", " هفت ", " هشت ", " نه "],
+      dahgan = [" بیست ", " سی ", " چهل ", " پنجاه ", " شصت ", " هفتاد ", " هشتاد ", " نود "],
+      sadgan = [" یکصد ", " دویست ", " سیصد ", " چهارصد ", " پانصد ", " ششصد ", " هفتصد ", " هشتصد ", " نهصد "],
+      dah = [" ده ", " یازده ", " دوازده ", " سیزده ", " چهارده ", " پانزده ", " شانزده ", " هفده ", " هیجده ", " نوزده "];
   if (level > 0) {
     result += " و ";
     level -= 1;
@@ -45,14 +46,13 @@ const toWord = function(num, level) {
     result += toWord(parseInt(_num / 1000000000000, 10), level) + " تریلیارد " + toWord(_num % 1000000000000, level + 1);
   }
   return result;
-
 };
 
-const toWordRials = function(num) {
+var toWordRials = function toWordRials(num) {
   return toWord(num, 0) + " ریال";
 };
 
-const toWordTomans = function(num) {
+var toWordTomans = function toWordTomans(num) {
   if (num >= 10) {
     num = parseInt(num / 10, 10);
   } else if (num <= -10) {
@@ -64,15 +64,15 @@ const toWordTomans = function(num) {
   return toWord(num, 0) + " تومان";
 };
 
-const toEnglishDigits = function(str) {
+var toEnglishDigits = function toEnglishDigits(str) {
   var charCodeZero = '۰'.charCodeAt(0);
-  return str.replace(/[۰-۹]/g, function(w) {
+  return str.replace(/[۰-۹]/g, function (w) {
     return w.charCodeAt(0) - charCodeZero;
   });
-}
+};
 
-const toPersianDigits = function(str) {
-  const persian = {
+var toPersianDigits = function toPersianDigits(str) {
+  var persian = {
     0: '۰',
     1: '۱',
     2: '۲',
@@ -84,29 +84,29 @@ const toPersianDigits = function(str) {
     8: '۸',
     9: '۹'
   };
-  return str.replace(/[0-9]/g, function(w) {
+  return str.replace(/[0-9]/g, function (w) {
     return persian[w];
   });
-}
+};
 
-const onlyNumbers = function(str) {
-  return toEnglishDigits(str).replace(/\D/g,'')
-}
+var onlyNumbers = function onlyNumbers(str) {
+  return toEnglishDigits(str).replace(/\D/g, '');
+};
 
-const validateIRPhone = function(value){
-	let _value = value.toString().trim()
-	let _parsedPhoneValid = /^\d+$/.test(parsePhone(_value))
-	if(_value.length == 0 && !_parsedPhoneValid) return false
-	if(_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return true
-	if(_value[0] == '0' && _value[1] == '9' && _value.length === 11) return true
-	return false
-}
+var validateIRPhone = function validateIRPhone(value) {
+  var _value = value.toString().trim();
+  var _parsedPhoneValid = /^\d+$/.test(parsePhone(_value));
+  if (_value.length == 0 && !_parsedPhoneValid) return false;
+  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return true;
+  if (_value[0] == '0' && _value[1] == '9' && _value.length === 11) return true;
+  return false;
+};
 
-const parsePhone = function(value){
-	let _value = value.toString().trim()
-	if(_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return "0"+(_value.substr(3))
-	return _value
-}
+var parsePhone = function parsePhone(value) {
+  var _value = value.toString().trim();
+  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return "0" + _value.substr(3);
+  return _value;
+};
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports.toWord = toWord;
