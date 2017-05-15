@@ -1,6 +1,6 @@
 {
   "name": "pnumber",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "persian number utilities for javascript",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,10 @@
     "harf",
     "word",
     "toWord",
-    "rial"
+    "rial",
+    "phone",
+    "irphone",
+    "validate"
   ],
   "author": "mavi",
   "license": "MIT",

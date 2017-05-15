@@ -93,6 +93,21 @@ const onlyNumbers = function(str) {
   return toEnglishDigits(str).replace(/\D/g,'')
 }
 
+const validateIRPhone = function(value){
+	let _value = value.toString().trim()
+	let _parsedPhoneValid = /^\d+$/.test(parsePhone(_value))
+	if(_value.length == 0 && !_parsedPhoneValid) return false
+	if(_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return true
+	if(_value[0] == '0' && _value[1] == '9' && _value.length === 11) return true
+	return false
+}
+
+const parsePhone = function(value){
+	let _value = value.toString().trim()
+	if(_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return "0"+(_value.substr(3))
+	return _value
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports.toWord = toWord;
   module.exports.toWordRials = toWordRials;
@@ -100,4 +115,6 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports.toPersianDigits = toPersianDigits;
   module.exports.toEnglishDigits = toEnglishDigits;
   module.exports.onlyNumbers = onlyNumbers;
+  module.exports.parsePhone = parsePhone;
+  module.exports.validateIRPhone = validateIRPhone;
 }
