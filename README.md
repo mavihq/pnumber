@@ -7,6 +7,11 @@ persian number utilities for javascript
 + Convert number to word in Tomans
 + Convert persian number to english number in string
 + Convert english number to persian number in string
++ Get only numbers from string
++ Parse persian phone numbers from given string
++ Validate persian phone numbers
++ Switch persian chars to english chars
++ Switch english chars to persian chars
 
 ## Usage
 

@@ -19,10 +19,50 @@ var toWord = function toWord(num, level) {
     }
   }
   var result = "",
-      yekan = [" یک ", " دو ", " سه ", " چهار ", " پنج ", " شش ", " هفت ", " هشت ", " نه "],
-      dahgan = [" بیست ", " سی ", " چهل ", " پنجاه ", " شصت ", " هفتاد ", " هشتاد ", " نود "],
-      sadgan = [" یکصد ", " دویست ", " سیصد ", " چهارصد ", " پانصد ", " ششصد ", " هفتصد ", " هشتصد ", " نهصد "],
-      dah = [" ده ", " یازده ", " دوازده ", " سیزده ", " چهارده ", " پانزده ", " شانزده ", " هفده ", " هیجده ", " نوزده "];
+    yekan = [
+      " یک ",
+      " دو ",
+      " سه ",
+      " چهار ",
+      " پنج ",
+      " شش ",
+      " هفت ",
+      " هشت ",
+      " نه "
+    ],
+    dahgan = [
+      " بیست ",
+      " سی ",
+      " چهل ",
+      " پنجاه ",
+      " شصت ",
+      " هفتاد ",
+      " هشتاد ",
+      " نود "
+    ],
+    sadgan = [
+      " یکصد ",
+      " دویست ",
+      " سیصد ",
+      " چهارصد ",
+      " پانصد ",
+      " ششصد ",
+      " هفتصد ",
+      " هشتصد ",
+      " نهصد "
+    ],
+    dah = [
+      " ده ",
+      " یازده ",
+      " دوازده ",
+      " سیزده ",
+      " چهارده ",
+      " پانزده ",
+      " شانزده ",
+      " هفده ",
+      " هیجده ",
+      " نوزده "
+    ];
   if (level > 0) {
     result += " و ";
     level -= 1;
@@ -66,7 +106,7 @@ var toWordTomans = function toWordTomans(num) {
 
 var toEnglishDigits = function toEnglishDigits(str) {
   var charCodeZero = '۰'.charCodeAt(0);
-  return str.replace(/[۰-۹]/g, function (w) {
+  return str.replace(/[۰-۹]/g, function(w) {
     return w.charCodeAt(0) - charCodeZero;
   });
 };
@@ -84,7 +124,7 @@ var toPersianDigits = function toPersianDigits(str) {
     8: '۸',
     9: '۹'
   };
-  return str.replace(/[0-9]/g, function (w) {
+  return str.replace(/[0-9]/g, function(w) {
     return persian[w];
   });
 };
@@ -96,17 +136,181 @@ var onlyNumbers = function onlyNumbers(str) {
 var validateIRPhone = function validateIRPhone(value) {
   var _value = value.toString().trim();
   var _parsedPhoneValid = /^\d+$/.test(parsePhone(_value));
-  if (_value.length == 0 && !_parsedPhoneValid) return false;
-  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return true;
-  if (_value[0] == '0' && _value[1] == '9' && _value.length === 11) return true;
+  if (_value.length == 0 && !_parsedPhoneValid)
+    return false;
+  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13)
+    return true;
+  if (_value[0] == '0' && _value[1] == '9' && _value.length === 11)
+    return true;
   return false;
 };
 
 var parsePhone = function parsePhone(value) {
   var _value = value.toString().trim();
-  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13) return "0" + _value.substr(3);
+  if (_value[0] == '+' && _value[1] == '9' && _value[2] == '8' && _value.length === 13)
+    return "0" + _value.substr(3);
   return _value;
 };
+
+function switchToPersianKey(value) {
+  if (!value) {
+    return;
+  }
+  const persianChar = [
+    "ض",
+    "ص",
+    "ث",
+    "ق",
+    "ف",
+    "غ",
+    "ع",
+    "ه",
+    "خ",
+    "ح",
+    "ج",
+    "چ",
+    "ش",
+    "س",
+    "ی",
+    "ب",
+    "ل",
+    "ا",
+    "ت",
+    "ن",
+    "م",
+    "ک",
+    "گ",
+    "ظ",
+    "ط",
+    "ز",
+    "ر",
+    "ذ",
+    "د",
+    "پ",
+    "و",
+    "؟"
+  ]
+
+  const englishChar = [
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "\\[",
+    "\\]",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    ";",
+    "'",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    ",",
+    "\\?"
+  ];
+
+  for (var i = 0, charsLen = englishChar.length; i < charsLen; i++) {
+    value = value.replace(new RegExp(englishChar[i], "g"), persianChar[i]);
+  }
+
+  return toPersianDigits(value);
+}
+
+function switchToEnglishKey(value) {
+  if (!value) {
+    return;
+  }
+  var persianChar = [
+      "ض",
+      "ص",
+      "ث",
+      "ق",
+      "ف",
+      "غ",
+      "ع",
+      "ه",
+      "خ",
+      "ح",
+      "ج",
+      "چ",
+      "ش",
+      "س",
+      "ی",
+      "ب",
+      "ل",
+      "ا",
+      "ت",
+      "ن",
+      "م",
+      "ک",
+      "گ",
+      "ظ",
+      "ط",
+      "ز",
+      "ر",
+      "ذ",
+      "د",
+      "پ",
+      "و",
+      "؟"
+    ],
+    englishChar = [
+      "q",
+      "w",
+      "e",
+      "r",
+      "t",
+      "y",
+      "u",
+      "i",
+      "o",
+      "p",
+      "[",
+      "]",
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      ";",
+      "'",
+      "z",
+      "x",
+      "c",
+      "v",
+      "b",
+      "n",
+      "m",
+      ",",
+      "?"
+    ];
+
+  for (var i = 0, charsLen = persianChar.length; i < charsLen; i++) {
+    value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
+  }
+  return toEnglishDigits(value);
+}
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports.toWord = toWord;
@@ -117,4 +321,6 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports.onlyNumbers = onlyNumbers;
   module.exports.parsePhone = parsePhone;
   module.exports.validateIRPhone = validateIRPhone;
+  module.exports.switchToEnglishKey = switchToEnglishKey;
+  module.exports.switchToPersianKey = switchToPersianKey;
 }
